@@ -1,0 +1,265 @@
+Fase 1 - Setup Inicial:
+    ✔ Faça um fork desse repositório para a sua conta github @done(22-05-09 21:29)
+    ✔ Clone o seu repositório para a sua máquina local @done(22-05-09 21:29)
+    ✔ Inicie um projeto node na pasta deste projeto @done(22-05-09 21:29)
+    
+    Verificações: 
+        ✔ Se o comando npm init criou um arquivo package.json na raíz do seu projeto @done(22-05-09 21:30)
+
+
+
+Fase 2 - Criação da aplicação (Criado o sevidor web no app.js):
+    ✔ Instale a biblioteca express no projeto @done(22-05-09 21:30)
+    ✔ Faça com que o git ignore a pasta node_modules @done(22-05-09 21:30)
+    ✔ Crie um arquivo chamado app.js na raíz do seu projeto @done(22-05-09 21:30)
+    ✔ No app.js: @done(22-05-09 21:30)
+        ✔ Importe o express @done(22-05-09 21:30)
+        ✔ Crie um aplicação web com o express e guarde-a numa constante app. @done(22-05-09 21:30)
+        ✔ Crie uma rota get para o endereço '/'. @done(22-05-09 21:30)
+            Quando acessada, essa rota deve responder um 'Olá, visitante!' para o cliente
+        ✔ Escreva uma linha que iniciará o servidor na porta 3000 (app.listen) @done(22-05-09 21:30)
+            Quando o servidor iniciar, ele deve escrever no console: "Servidor rodando na porta 3000"
+
+    Verificações:
+        ✔ Execute o comando node app.js para iniciar o servidor. Você deve ver a mensagem "Servidor rodando na porta 3000" no console @done(22-05-09 21:30)
+        ✔ Abra o navegador e visite o endereço http://localhost:3000. Deve aparecer no navegador a frase "Olá, visitante!" @done(22-05-09 21:30)
+        ✔ Verifique se a pasta node_modules aparece listada no comando git status @done(22-05-09 21:31)
+
+
+
+Fase 3 - Instalação do nodemon e configuração para auto restart:
+    ✔ Instale o nodemon no projeto como dependência de desenvolvimento @done(22-05-09 21:29)
+    https://pt.stackoverflow.com/questions/163785/qual-a-diferen%C3%A7a-entre-dependencies-e-devdependencies
+
+    ☐ Altere o package.json:
+        ☐ Acrescente uma propriedade "start" ao objeto "scripts".
+        ☐ A propriedade start deve conter a string "nodemon app.js"
+    ☐ Execute o comando npm start no console.
+
+    Verificações:
+        ☐ Veja se a mensagem "Servidor rodando na porta 3000" aparece no console.
+        ☐ Abra o navegador e acesse http://localhost:3000. A mensagem 'Olá, visitante!' deve aparecer na tela.
+
+
+        
+Fase 4 - Organizando o MVC:
+    ☐ Crie uma pasta chamada routes na raíz do projeto.
+    ☐ Na pasta routes, crie um arquivo chamado PizzasRouter.js
+    ☐ No arquivo PizzasRouter.js:
+        ☐ Importe o express.
+        ☐ Crie um roteador e armazene-o numa constante router
+        ☐ Exporte essa constante
+
+    ☐ No arquivo app.js importe o roteador recém criado para uma constante chamada PizzasRouter.
+        Atente para que o uso do PizzasRouter ocorra depois da criação da
+        aplicação mas antes da linha que iniciar.
+    ☐ Utilize o PizzasRouter como roteador da aplicação. Dica: app.use(____)
+    ☐ Crie uma pasta chamada controllers na raíz do projeto.
+    ☐ Na pasta controllers crie um arquivo chamado PizzasController.js
+        Em passos a frente, o arquivo PizzasController.js irá conter as funções
+        responsáveis por tratar da requisição e da resposta a ser enviada para o cliente.
+        Essas funções chamaremos de controllers ou controladores.
+    ☐ No arquvo PizzasController.js crie um objeto literal vazio e o exporte utilizando o module.exports
+    ☐ Crie uma pasta chamada public.
+    ☐ Dentro da pasta public, crie duas pastas: css e img
+    ☐ Mova os arquivos que estão na pasta imagens para a pasta public/img
+    ☐ Remova a pasta imagens
+    
+    Verificações:
+        A cada alteração salva nos passos da Fase 4
+        o nodemon reiniciou a aplicação. No ponto atual, ele 
+        o servidor deve estar rodando sem erros, com as pastas e arquivos
+        criados.
+
+
+Fase 5 - Configurando o template engina e pasta de arquivos públicos:
+    ☐ Instale no projeto a biblioteca ejs
+    ☐ No app.js:
+        ☐ Importe a biblioteca nativa path.
+        ☐ Configure a aplicação para que ela utilize o EJS como template engine
+            Dica: Linha 12 de https://github.com/sergiomoura/filnemateca/blob/0721CDPROCV01BRED/index.js
+        ☐ Configure a aplicação para que ela reconheça a pasta public como a pasta de arquivos públicos e estáticos
+        Dica: Linha 15 de https://github.com/sergiomoura/filnemateca/blob/0721CDPROCV01BRED/index.js
+        Importante: Essas duas últimas alterações devem ser feitas antes do uso o ro
+
+    Verificações:
+        ☐ Verifique se o console está apresentando algum erro e se o nodemon está rodando.
+
+Fase 6 - Retornando a página estática com pizzas:
+    ☐ No arquivo PizzasRouter.js:
+        ☐ Importe o PizzasController
+        ☐ Crie uma rota get para '/' direcionando a requisição para PizzasController.listar
+    ☐ No objeto literal que está no PizzasController.js, crie uma função chamada listar
+        Essa função listar deve renderizar a view pizzas.ejs que será criado nos próximos passos
+    ☐ Crie uma pasta chamada views
+    ☐ Na pasta views crie um arquivo chamado pizzas.ejs
+    ☐ Copie para o arquivo pizzas.ejs o conteúdo do link abaixo:
+    https://github.com/sergiomoura/pizzaria-fantastica-tema/blob/master/index.html
+    ☐ No arquivo app.js, remova a rota app.get criada na Fase 2.
+    Verificações:
+        ☐ Com o sevidor rodando, visite http://localhost:3000.
+            Você deve ver uma página com algumas informações sobre pizzas
+            (nomes e preços) mas ainda sem estilização nem imagens
+
+
+
+Fase 7 - Acrescentando estilo e imagens a página estática:
+    ☐ Dentro da pasta public/css crie um arquivo chamado styles.css
+    ☐ Copie para o arquivo styles.css o conteúdo do link abaixo:
+    https://github.com/sergiomoura/pizzaria-fantastica-tema/blob/master/assets/css/styles.css
+    ☐ Dentro da pasta public/css crie um arquivo chamado index.css
+    ☐ Copie para o arquivo index.css o conteúdo do link abaixo:
+    https://github.com/sergiomoura/pizzaria-fantastica-tema/blob/master/assets/css/index.css
+
+    ☐ No arquivo pizzas.ejs:
+        ☐ Adeque o caminho do link do estilo para /css/styles.css
+        ☐ Adeque o caminho do link do estilo para /css/index.css
+        ☐ Adeque o caminho das imagens para /img/quatroqueijos.jpg
+
+    Verificações:
+        ☐ Com o sevidor rodando, visite https://localhost:3000
+        Você deve ver uma página exibindo as pizzas :p
+
+Fase 8 - Mostrando as pizzas dinamicamente a partir de um arquivo JSON:
+    ☐ Crie uma pasta chamada database
+    ☐ Na pasta database crie um arquivo chamado Pizzas.json
+        Este arquivo irá conter um array com objetos.
+        Cada um desses objeto terá informações sobre uma pizza
+    ☐ Copie para o arquivo Pizzas.json o conteúdo do link abaixo
+    https://github.com/sergiomoura/pizzaria-fantastica/blob/master/database/Pizzas.json
+    ☐ No arquivo PizzasController.js
+        ☐ Importe o conteúdo do arquivo Pizzas.json para uma variável chamada pizzas.
+        ☐ Altere a função listar para que ela renderize a view pizzas passando para ela também a variável pizzas.
+    ☐ No arquivo pizzas.ejs
+        ☐ Logo no começo da tag main, crie um elemento <% %> com um 'for'
+        ☐ Este 'for' deve percorrer o array de pizzas. Dica: for(p of pizzas){}
+        ☐ Ponha dentro do for um dos elementos' article presentes no arquivo
+        ☐ Lembre de ter um elemento <% %> para fechar o for, isto é: <% } %>
+        ☐ Injete nesse elemento article que está dentro do for as informações dinâmicas:
+        Exemplo:
+            Onde se vê:
+            <img src="/img/quatroqueijos.jpg" alt="Quatro Queijos">
+            Deve se ver:
+            <img src="<%=p.img%>" alt="<%=p.nome%>">
+        Obs:
+            Ainda não alteraremos o link <a href="pizza.html">Ver Mais</a>
+        ☐ Apague todos os elementos article que estiverem fora do for.
+    
+    Verificações:
+        Com o sevidor rodando, visite o endereço https://localhost:3000
+        Você deve ver o a página exibindo as pizzas, mas com preços apenas
+        vão ter um PONTO como separador de decimal.
+
+
+Fase 9 - Criando uma página para mostrar detalhes de uma pizza:
+    ☐ No arquivo PizzasRouter.js crie uma rota get para '/pizzas/:id'
+        Essa rota deve direcionar a requisição para o controller PizzasController.mostrar
+    ☐ No objeto literal do arquivo PizzasController.js, crie uma função chamada mostrar.
+        Essa função deve:
+            ☐ Capturar o id da pizza desejada pelo usuário (req.params.id) numa variável id
+            ☐ Buscar no array de pizzas a pizza tem o id buscado e guardar numa variável pizza
+                Dica: pizzas.find(p=>p.id==id)
+            ☐ Renderizar a view pizza.ejs, passando para ela também a variável pizza
+
+    ☐ Na pasta views, crie o arquivo pizza.ejs
+    ☐ Copie para o arquivo pizza.ejs o conteúdo do link abaixo
+    https://github.com/sergiomoura/pizzaria-fantastica-tema/blob/master/pizza.html
+    ☐ Adeque o arquivo de pizza.ejs para exibir as informações dinâmicas:
+        Exemplo:
+            Onde se vê:
+            <h1>Quatro Queijos</h1>
+            Deve se ver:
+            <h1><%= pizza.nome %></h1>
+        Obs:
+            Ainda não alteraremos o link <a href="pizza.html" class="prev">&lt;</a>
+
+    Verificações:
+            Com o servidor rodando, visite o endereço http://localhost:3000/pizzas/3
+            O que se deve ver são as informações da pizza Fracatu, ainda sem estilização.
+
+Fase 10 - Acrescentando estilo à página de pizza:
+    ☐ Na pasta public/css crie um arquivo pizza.css
+    ☐ Copie para o arquivo pizza.css o conteúdo do link abaixo:
+    https://github.com/sergiomoura/pizzaria-fantastica-tema/blob/master/assets/css/pizza.css
+    ☐ Adeque o os links de estilos para que eles carreguem o estilo da pasta public
+    
+    Verificações:
+        Com o servidor rodando, visite o endereço http://localhost:3000/pizzas/3
+        O que se deve ver é uma página com as informações de uma pizza, agora, estilizada.
+
+Fase 11 - Criando link da página inicial para página de detalhes de uma pizza:
+    ☐ Na view da página inicial, ou seja, no arquivo pizzas.ejs altere o link:
+    Onde se vê:
+        <a href="pizza.html">Ver Mais</a>
+    Deve se ver:
+        <a href="/pizzas/<%= p.id %>">Ver Mais</a>
+
+    Verificações:
+        Com a aplicação rodando, visite o endereço da página inicial
+        http://localhost:3000 e clique no link "Ver mais" de uma pizza.
+        Você deve ser direcionado para a página que exibe as informações
+        da pizza que você clicou.
+Fase 12 - Exibindo pizzas buscadas:
+    ☐ Adequando o form da view para busca
+        No arquivo pizzas.ejs altere o form para que ele tenha método get e
+        action apontando para a rota /pizzas/busca
+    ☐ No PizzasRouter.js, crie uma rota get para /pizzas/busca.
+        Essa rota deve direcionar a requisição para PizzasController.buscar
+        Ela deve ser definida ANDTES da rota '/pizzas/:id'. Por que?
+    ☐ No objeto do PizzasController.js crie uma função buscar.
+        Essa função deve:
+            ☐ Capturar o que o usuário digitou no campo de busca e guardar na variável trechoBuscado
+               Dica: Dê um console.log(req.query) e veja o conteúdo desse objeto.
+            ☐ Se o trechoBuscado for vazio, redirecione o usuário para a rota '/'
+                Dica: res.redirect(___)
+            ☐ Se trechoBuscado não for vazio:
+                - Filtre do array de pizzas todas as pizzas que tem no nome o trechoBuscado
+                    Atenção: A busca não deve ser sensível ao caso, ou seja, 
+                    buscando por 'm' deve encontrar 'Marguerita', mesmo tendo-se
+                    buscado pela letra minúscula
+                - Armazene o resultado dessa filtragem numa variável resultado
+                - Renderize a view pizzas.ejs passando para ela um objeto literal contendo:
+                    1. Um campo de nome pizzas e de valor igual a variável resultado.
+                    2. Um campo de nome busca com o valor igual a variável trechoBuscado.
+                Dica: res.render('pizzas.ejs',{campo1: valor1, campo2: valor2})
+    Verificações:
+        Com o servidor rodando, visite http://localhost:3000 e busque por ba
+        Devem aparecer somente as pizzas Baiana e Meat & Bacon
+
+Fase 13 - Exibindo mensagem de específica quando nenhuma pizza for encontrada:
+    ☐ No pizzas.ejs:
+        Crie um elemento por cento e nele um if que testa se
+        o tamanho do array de pizzas é zero. Caso seja, mostrar mensagem...
+        <div class="pizza-nao-encontrada">Nenhuma pizza encontrada. Tente ser menos específico na sua busca.</div>
+        Caso contrário, exibir as pizzas do array de pizza com o for que já foi codificado.
+    Verificações:
+        Com o servidor rodando, visite http://localhost.com e busque por "Jacaré"
+        Você deve ver uma mensagem: "Nenhuma pizza encontrada. Tente ser menos
+        específico na sua busca."
+
+Fase 14 - Fazendo com que o que o usuário digitou na busca não seja perdido:
+    ☐ Na view  pizzas.ejs altere o elemento input type="text" para que o atributo value mostre busca, caso busca não seja vazio.
+    ☐ No controller listar do PizzasController, além do array de pizzas, passe um campo "busca" com o valor '' (string vazia).
+
+Fase 15 - Passando de uma pizza para outra:
+    Nessa fase, faremos com que na página que exibe os detalhes de
+    uma pizza, seja possível navegar para a próxima pizza e para
+    a pizza anterior clicando nos links em forma de seta
+    ☐ Na função mostrar no arquivo PizzasController:
+        - Declare duas variáveis: idProxima e idAnterior 
+        - Capture o id da pizza a partir da URL na variável id (Esse passo já foi dado... req.params.id)
+        - Determine a posição da pizza que tem o id desejado (Dica: Use a função findIndex) e guarde na variável posicao
+        - Guarde a pizza da posicao encontrada na variável pizza
+        - Se a posição da pizza encontrada for a última do array, idProxima deve receber o id da primeira pizza
+        - Caso contrário, idProxima deve ter o id da pizza da posição seguinte
+        - Se a posição da pizza envontrada for a primeira do array, o idAnterior deve receber o id da última pizza
+        - Caso controário, idAnterior deve receber o id da pizza na posição anterior.
+    ☐ No arquivo pizza.ejs, adeque os links:
+        Onde se vê:
+            <a href="pizza.html" class="prev">
+        Deve se ver:
+            <a href="/pizzas/<%= idAnterior %>" class="prev">
+        e Onde se vê:
+            <a href="pizza.html" class="next">
+        Deve se ver:
+            <a href="/pizzas/<%= idProxima %>" class="next">
