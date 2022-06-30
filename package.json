@@ -15,5 +15,17 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.18"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fechilli/portal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fechilli/portal/issues"
+  },
+  "homepage": "https://github.com/fechilli/portal#readme",
+  "description": ""
 }
